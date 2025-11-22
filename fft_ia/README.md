@@ -1,14 +1,24 @@
-# FFT-IA: FFT-Inspired Attention — True O(N log N) with Full Softmax
+# FFT-IA
 
-**Paper**: "FFT-Inspired Attention (FFT-IA): O(N log N) Complexity via Hierarchical Structural Pruning and Softmax Fidelity" (IEEE-style, 2025)
+FFT-Inspired Attention.
 
-The **first** attention mechanism that:
-- Achieves **true O(N log N)** via **fixed radix-2 butterfly factorization**
-- Keeps **exact local Softmax** → **100% Softmax Fidelity**
-- Uses **dynamic Q/K re-projection** → fully content-aware
-- Has **no approximation, no hashing, no kernel tricks**
-- Ships with **Triton fused kernel** → **7–10× faster** than PyTorch loop
+Replaces the O(N²) self-attention layer in any Transformer with a fixed, radix-2 butterfly network.
 
-## Install
+- True O(N log N) in sequence length  
+- Exact local softmax (no approximation)  
+- Dynamic Q/K re-projection every stage (content-aware)  
+- Sequence length must be power of 2 (auto-padded)  
+- Works today. Drop-in replacement.
+
+That's it.
+
+No kernels.  
+No low-rank.  
+No learned sparsity.  
+No "efficient attention" tricks.
+
+Just structural pruning inspired by the 1965 FFT.
+
+### Install
 ```bash
-pip install git+https://github.com/yourname/fft-ia.git
+pip install git+https://github.com/drchaiya/FFT-IA-Attention-Head.git
