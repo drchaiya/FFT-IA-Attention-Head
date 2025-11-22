@@ -1,0 +1,4 @@
+torch>=2.3.0
+einops
+triton>=2.3; platform_system != "Darwin"  # optional but recommended for fusion
+numpy
